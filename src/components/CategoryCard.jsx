@@ -1,14 +1,8 @@
 
 import { Link } from 'react-router-dom';
-import { Category } from '@/data/mockData';
 import { Button } from '@/components/ui/button';
 
-interface CategoryCardProps {
-  category: Category;
-  isHighlighted?: boolean;
-}
-
-const CategoryCard = ({ category, isHighlighted = false }: CategoryCardProps) => {
+const CategoryCard = ({ category, isHighlighted = false }) => {
   return (
     <div className={`category-card ${isHighlighted ? 'ring-2 ring-secondary' : ''}`}>
       <div className={`category-icon ${isHighlighted ? 'bg-secondary bg-opacity-10' : 'bg-blue-50'}`}>

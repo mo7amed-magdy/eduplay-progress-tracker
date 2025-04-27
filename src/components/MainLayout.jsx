@@ -1,13 +1,9 @@
 
-import { ReactNode } from 'react';
+import { React } from 'react';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 
-interface MainLayoutProps {
-  children: ReactNode;
-}
-
-const MainLayout = ({ children }: MainLayoutProps) => {
+const MainLayout = ({ children }) => {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />

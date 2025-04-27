@@ -1,17 +1,10 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, SkipBack, SkipForward, Maximize, Volume2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 
-interface VideoPlayerProps {
-  videoUrl: string;
-  title: string;
-  onComplete?: () => void;
-}
-
-const VideoPlayer = ({ videoUrl, title, onComplete }: VideoPlayerProps) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
+const VideoPlayer = ({ videoUrl, title, onComplete }) => {
+  const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -30,7 +23,6 @@ const VideoPlayer = ({ videoUrl, title, onComplete }: VideoPlayerProps) => {
       setCurrentTime(video.currentTime);
       setProgress((video.currentTime / video.duration) * 100);
       
-      // Check if video is complete (with 1 second margin)
       if (video.currentTime >= video.duration - 1 && onComplete) {
         onComplete();
       }
@@ -56,25 +48,25 @@ const VideoPlayer = ({ videoUrl, title, onComplete }: VideoPlayerProps) => {
     setIsPlaying(!isPlaying);
   };
   
-  const handleSeek = (value: number[]) => {
+  const handleSeek = (value) => {
     if (!videoRef.current) return;
     const newTime = (value[0] / 100) * duration;
     videoRef.current.currentTime = newTime;
     setProgress(value[0]);
   };
   
-  const handleVolumeChange = (value: number[]) => {
+  const handleVolumeChange = (value) => {
     if (!videoRef.current) return;
     videoRef.current.volume = value[0];
     setVolume(value[0]);
   };
   
-  const formatTime = (seconds: number) => {
+  const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
-  
+
   return (
     <div className="rounded-lg overflow-hidden bg-black">
       <div className="relative">
