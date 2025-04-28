@@ -1,14 +1,7 @@
 
 import { Link } from 'react-router-dom';
-import { Course } from '@/data/mockData';
 
-interface CourseCardProps {
-  course: Course;
-  showProgress?: boolean;
-  progress?: number;
-}
-
-const CourseCard = ({ course, showProgress = false, progress = 0 }: CourseCardProps) => {
+const CourseCard = ({ course, showProgress = false, progress = 0 }) => {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <Link to={`/courses/${course.id}`}>

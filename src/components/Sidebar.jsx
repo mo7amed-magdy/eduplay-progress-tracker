@@ -5,7 +5,7 @@ import { Book, Video, Library, User, FileText } from 'lucide-react';
 const Sidebar = () => {
   const location = useLocation();
   
-  const isActive = (path: string) => {
+  const isActive = (path) => {
     return location.pathname.startsWith(path);
   };
 

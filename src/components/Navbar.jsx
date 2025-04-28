@@ -4,15 +4,7 @@ import { Bell, Search, Mail, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
-interface NavbarProps {
-  user?: {
-    name: string;
-    avatar: string;
-    role: string;
-  };
-}
-
-const Navbar = ({ user = { name: 'Sara Ahmed', avatar: '/placeholder.svg', role: 'Student' } }: NavbarProps) => {
+const Navbar = ({ user = { name: 'Sara Ahmed', avatar: '/placeholder.svg', role: 'Student' } }) => {
   return (
     <header className="border-b border-gray-200 bg-white py-3 px-6">
       <div className="flex items-center justify-between">
